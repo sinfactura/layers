@@ -11,6 +11,7 @@ export class SfLayersStack extends Stack {
     this.createLambdaLayer('uuid');
     this.createLambdaLayer('crypto');
     this.createLambdaLayer('jsonwebtoken');
+    this.createLambdaLayer('axios');
 
   }
 
