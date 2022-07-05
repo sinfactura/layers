@@ -19,7 +19,7 @@ export class SfLayersStack extends Stack {
     new LayerVersion(this, name, {
       layerVersionName: name,
       code: Code.fromAsset(`layers/${name}`),
-      compatibleArchitectures: [ Architecture.X86_64 ],
+      compatibleArchitectures: [ Architecture.ARM_64 ],
       compatibleRuntimes: [ Runtime.NODEJS_16_X ]
     });
   }
