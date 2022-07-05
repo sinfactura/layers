@@ -1,0 +1,8 @@
+{
+  "name": "helper",
+  "version": "1.0.0",
+  "author": "Moises Samuel Maison",
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1"
+  }
+}

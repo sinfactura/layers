@@ -1,16 +1,26 @@
+
 import { Stack, StackProps } from 'aws-cdk-lib';
+import { Architecture, Code, LayerVersion, Runtime } from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
 
 export class SfLayersStack extends Stack {
+
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    // The code that defines your stack goes here
+    this.createLambdaLayer('uuid');
+    this.createLambdaLayer('crypto');
+    this.createLambdaLayer('jsonwebtoken');
 
-    // example resource
-    // const queue = new sqs.Queue(this, 'SfLayersQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
   }
+
+  private createLambdaLayer(name: string) {
+    new LayerVersion(this, name, {
+      layerVersionName: name,
+      code: Code.fromAsset(`layers/${name}`),
+      compatibleArchitectures: [ Architecture.X86_64 ],
+      compatibleRuntimes: [ Runtime.NODEJS_16_X ]
+    });
+  }
+
 }
